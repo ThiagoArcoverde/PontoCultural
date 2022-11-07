@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package aep;
+package Telas;
 
 /**
  *
@@ -109,7 +109,9 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void butLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLoginActionPerformed
-        // TODO add your handling code here:
+        TelaLogin tlLogin = new TelaLogin();
+        tlLogin.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_butLoginActionPerformed
 
     /**

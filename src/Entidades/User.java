@@ -1,4 +1,4 @@
-package aep;
+package Entidades;
 
 public class User {
     public int id;
@@ -6,5 +6,5 @@ public class User {
     public String cpf;
     public String email;
     public String telefone;
-    //public Cargo cargo;
+    public Cargo cargoId;
 }
