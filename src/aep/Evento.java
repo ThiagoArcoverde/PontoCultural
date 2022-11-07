@@ -6,7 +6,7 @@ public class Evento {
     public int capacidade;
     public String nome;
     public LocalDateTime datainicio; 
-    public String local;
+    public Local local;
     public String descricao;
     public User responsavdel;
     public String duracao;
