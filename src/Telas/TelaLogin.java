@@ -4,6 +4,11 @@
  */
 package Telas;
 
+import DAOs.UserDAO;
+import Entidades.Login;
+import Entidades.User;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author thilu
@@ -32,7 +37,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         butEntrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -64,14 +68,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         jLabel3.setText("Senha");
-
-        jTextField2.setText("********");
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         butEntrar.setBackground(new java.awt.Color(204, 0, 51));
         butEntrar.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
@@ -146,10 +142,7 @@ public class TelaLogin extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(38, 38, 38)
                                         .addComponent(jLabel5)))))
-                        .addGap(0, 79, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 79, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -165,9 +158,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(butEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
@@ -221,7 +212,23 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void butEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEntrarActionPerformed
-        // TODO add your handling code here:
+        Login login = new Login();
+        login.email = this.jTextField1.getText();
+        login.senha = String.valueOf(this.jPasswordField1.getPassword());
+        
+        UserDAO dao = new UserDAO();
+        User usuario = new User();
+        try {
+            usuario = dao.autenticar(login);
+            if(usuario.id != 0) {
+                JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.nome);
+                TelaInicial tlInicial = new TelaInicial();
+                tlInicial.setVisible(true);
+                this.dispose();
+            }
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao se comunicar com o servidor!");
+        }
     }//GEN-LAST:event_butEntrarActionPerformed
 
     private void butVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butVoltarActionPerformed
@@ -229,10 +236,6 @@ public class TelaLogin extends javax.swing.JFrame {
         tlInicial.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_butVoltarActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
@@ -286,6 +289,5 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,5 +6,5 @@ public class User {
     public String cpf;
     public String email;
     public String telefone;
-    public Cargo cargoId;
+    public int cargoId;
 }
