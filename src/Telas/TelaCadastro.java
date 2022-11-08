@@ -83,7 +83,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         butCadastrar.setBackground(new java.awt.Color(204, 0, 51));
         butCadastrar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         butCadastrar.setForeground(new java.awt.Color(242, 242, 242));
-        butCadastrar.setText("Cadastre-se");
+        butCadastrar.setText("Continuar");
         butCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         butCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
