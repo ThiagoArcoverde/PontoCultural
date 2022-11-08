@@ -56,6 +56,11 @@ public class TelaInicial extends javax.swing.JFrame {
         butCadastro.setText("Cadastre-se");
         butCadastro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         butCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCadastroActionPerformed(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
@@ -117,6 +122,12 @@ public class TelaInicial extends javax.swing.JFrame {
         tlLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_butLoginActionPerformed
+
+    private void butCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCadastroActionPerformed
+        TelaCadastro tlCadastro = new TelaCadastro();
+        tlCadastro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_butCadastroActionPerformed
 
     /**
      * @param args the command line arguments

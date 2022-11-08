@@ -4,6 +4,11 @@
  */
 package Telas;
 
+import DAOs.UserDAO;
+import Entidades.Cargo;
+import Entidades.User;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author thilu
@@ -13,8 +18,16 @@ public class TelaCadastro2 extends javax.swing.JFrame {
     /**
      * Creates new form TelaLoginDados
      */
+    public User usuarioCreateObject;
+    
     public TelaCadastro2() {
         initComponents();
+    }
+    
+    public TelaCadastro2(User novoUsuario) {
+        initComponents();
+        
+        this.usuarioCreateObject = novoUsuario;
     }
 
     /**
@@ -110,6 +123,11 @@ public class TelaCadastro2 extends javax.swing.JFrame {
         butVoltar.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         butVoltar.setText("Voltar");
         butVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butVoltarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         jLabel6.setText("Sobrenome");
@@ -220,12 +238,33 @@ public class TelaCadastro2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void butContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butContinuarActionPerformed
-        // TODO add your handling code here:
+        this.usuarioCreateObject.cargoId = 1;
+        this.usuarioCreateObject.nome = jTextField1.getText() + " " + this.jTextField4.getText();
+        this.usuarioCreateObject.cpf = jTextField2.getText();
+        this.usuarioCreateObject.telefone = jTextField3.getText();
+        
+        if(!this.usuarioCreateObject.senha.isEmpty() && !this.usuarioCreateObject.email.isEmpty()) {
+            UserDAO dao = new UserDAO();
+            try {
+                if(dao.cadastrar(usuarioCreateObject)) {
+                    JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+                }
+            }catch(Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar usuário. Tente novamente.");
+            }
+        }
     }//GEN-LAST:event_butContinuarActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void butVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butVoltarActionPerformed
+        TelaCadastro tlCadastro = new TelaCadastro(usuarioCreateObject);
+        
+        tlCadastro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_butVoltarActionPerformed
 
     /**
      * @param args the command line arguments

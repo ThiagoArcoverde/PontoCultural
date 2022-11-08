@@ -4,6 +4,9 @@
  */
 package Telas;
 
+import Entidades.User;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author thilu
@@ -13,8 +16,16 @@ public class TelaCadastro extends javax.swing.JFrame {
     /**
      * Creates new form TelaCadastro
      */
+    
+    boolean checked = false;
+    
     public TelaCadastro() {
         initComponents();
+    }
+    
+    public TelaCadastro(User usuarioCadastro) {
+        initComponents();
+        this.jTextField1.setText(usuarioCadastro.email);
     }
 
     /**
@@ -32,13 +43,13 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         butVoltar = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         butCadastrar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField2 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,16 +71,15 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         jLabel4.setText("Senha");
 
-        jTextField2.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-
         jLabel5.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         jLabel5.setText("Confirme sua senha");
 
-        jTextField3.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-
         butVoltar.setText("Voltar");
+        butVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butVoltarActionPerformed(evt);
+            }
+        });
 
         jCheckBox1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         jCheckBox1.setText("Eu li e aceito os termos e condições de uso");
@@ -86,9 +96,22 @@ public class TelaCadastro extends javax.swing.JFrame {
         butCadastrar.setText("Continuar");
         butCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         butCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCadastrarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         jLabel6.setText("Ja tem uma conta? Entre aqui");
+
+        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        jPasswordField1.setPreferredSize(new java.awt.Dimension(64, 22));
+
+        jPasswordField2.setText("jPasswordField2");
+        jPasswordField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        jPasswordField2.setPreferredSize(new java.awt.Dimension(64, 22));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -103,23 +126,23 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addGap(129, 129, 129)
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(butCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                            .addComponent(butCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                            .addComponent(jTextField1)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,11 +156,11 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox1)
                 .addGap(31, 31, 31)
@@ -192,6 +215,35 @@ public class TelaCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    private void butVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butVoltarActionPerformed
+        TelaInicial tlInicial = new TelaInicial();
+        tlInicial.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_butVoltarActionPerformed
+
+    private void butCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCadastrarActionPerformed
+        this.checked = jCheckBox1.isSelected();
+        
+        String senha1 = String.valueOf(jPasswordField1.getPassword());
+        String senha2 = String.valueOf(jPasswordField2.getPassword());
+        
+        var novoUsuario = new User();
+        
+        if(!checked) {
+            JOptionPane.showMessageDialog(null, "Você precisa aceitar os termos.");
+        } else if(!senha1.equals(senha2)) {
+            JOptionPane.showMessageDialog(null, "As senhas estão diferentes");
+        } else {
+            novoUsuario.senha = senha2;
+            novoUsuario.email = jTextField1.getText();
+            
+            TelaCadastro2 tlCadastro2 = new TelaCadastro2(novoUsuario);
+            
+            tlCadastro2.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_butCadastrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -239,8 +291,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

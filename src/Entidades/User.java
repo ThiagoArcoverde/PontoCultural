@@ -7,4 +7,5 @@ public class User {
     public String email;
     public String telefone;
     public int cargoId;
+    public String senha;
 }
