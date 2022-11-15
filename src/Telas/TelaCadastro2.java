@@ -109,7 +109,7 @@ public class TelaCadastro2 extends javax.swing.JFrame {
         });
 
         butContinuar.setBackground(new java.awt.Color(204, 0, 51));
-        butContinuar.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        butContinuar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         butContinuar.setForeground(new java.awt.Color(255, 255, 255));
         butContinuar.setText("Continuar");
         butContinuar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -190,9 +190,9 @@ public class TelaCadastro2 extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(butContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(45, 45, 45)
+                .addComponent(butContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
                 .addComponent(butVoltar)
                 .addContainerGap())
         );
