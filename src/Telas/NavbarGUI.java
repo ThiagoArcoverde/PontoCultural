@@ -4,6 +4,7 @@
  */
 package Telas;
 
+import Entidades.User;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -18,6 +19,15 @@ public class NavbarGUI extends javax.swing.JFrame {
     /**
      * Creates new form NavbarGUI
      */
+    
+    public User usuarioLogado;
+    
+    public NavbarGUI(User usuario) {
+        initComponents();
+        mudarPainel(painelHome);
+        this.usuarioLogado = usuario;
+    }
+    
     public NavbarGUI() {
         initComponents();
         mudarPainel(painelHome);

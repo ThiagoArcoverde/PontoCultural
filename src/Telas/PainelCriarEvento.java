@@ -4,6 +4,11 @@
  */
 package Telas;
 
+import DAOs.EventoDAO;
+import Entidades.Evento;
+import Entidades.User;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author thilu
@@ -13,6 +18,7 @@ public class PainelCriarEvento extends javax.swing.JPanel {
     /**
      * Creates new form PainelCriarEvento
      */
+    
     public PainelCriarEvento() {
         initComponents();
     }
@@ -80,6 +86,11 @@ public class PainelCriarEvento extends javax.swing.JPanel {
         jLabel6.setText("Dia");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dia 01", "Dia 02", "Dia 03", "Dia 04", "Dia 05", "Dia 06", "Dia 07", "Dia 08", "Dia 09", "Dia 10", "Dia 11", "Dia 12", "Dia 13", "Dia 14", "Dia 15", "Dia 16", "Dia 17", "Dia 18", "Dia 19", "Dia 20", "Dia 21", "Dia 22", "Dia 23", "Dia 24", "Dia 25", "Dia 26", "Dia 27", "Dia 28", "Dia 29", "Dia 30", "Dia 31" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 16)); // NOI18N
         jLabel7.setText("Mês");
@@ -101,6 +112,11 @@ public class PainelCriarEvento extends javax.swing.JPanel {
         butCriarEvento.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         butCriarEvento.setText("Criar");
         butCriarEvento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        butCriarEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCriarEventoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -213,6 +229,31 @@ public class PainelCriarEvento extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void butCriarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCriarEventoActionPerformed
+        Evento novoEvento = new Evento();
+        
+        novoEvento.nome = this.TFNome.getText();
+        novoEvento.endereco = this.TFEndereco.getText();
+        novoEvento.descricao = this.TFDesc.getText();
+        novoEvento.capacidade = Integer.parseInt(this.TFCapacidade.getText());
+        novoEvento.responsavelId = 1;
+        
+        if(novoEvento != null) {
+            EventoDAO dao = new EventoDAO();
+            try {
+                if(dao.cadastrarEvento(novoEvento)) {
+                    JOptionPane.showMessageDialog(null, "Evento cadastrado com sucesso!");
+                }
+            }catch(Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar evento. Tente novamente.");
+            }
+        }
+    }//GEN-LAST:event_butCriarEventoActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

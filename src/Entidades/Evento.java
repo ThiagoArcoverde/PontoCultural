@@ -1,12 +1,12 @@
 package Entidades;
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 public class Evento {
     public int id;
     public int responsavelId;
-    public Categoria categoriaId;
+    public int categoriaId;
     public String nome;
-    public LocalDateTime data; 
+    public Date data; 
     public String endereco;
     public String descricao;
     public int capacidade;

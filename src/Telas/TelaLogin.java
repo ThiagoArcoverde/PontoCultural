@@ -227,7 +227,7 @@ public class TelaLogin extends javax.swing.JFrame {
             usuario = dao.autenticar(login);
             if(usuario.id != 0) {
                 JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.nome);
-                NavbarGUI tlInicial = new NavbarGUI();
+                NavbarGUI tlInicial = new NavbarGUI(usuario);
                 tlInicial.setVisible(true);
                 this.dispose();
             }
