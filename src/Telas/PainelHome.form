@@ -88,10 +88,19 @@
       </Properties>
     </Component>
     <Component class="Telas.PainelEvento" name="painelEvento1">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="painelEvento1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));"/>
+      </AuxValues>
     </Component>
     <Component class="Telas.PainelEvento" name="painelEvento2">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="painelEvento2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));"/>
+      </AuxValues>
     </Component>
     <Component class="Telas.PainelEvento" name="painelEvento3">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="painelEvento3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="butVoltar">
       <Properties>
@@ -139,6 +148,7 @@
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="&quot;P&#xe1;gina &quot; + Integer.toString(numPag)" type="code"/>
         </Property>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
   </SubComponents>

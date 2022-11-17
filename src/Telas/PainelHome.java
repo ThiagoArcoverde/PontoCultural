@@ -44,6 +44,12 @@ int numPag = 1;
         jLabel1.setText("<html><body><center> Ponto <br> Cultural </center></body></html>");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        painelEvento1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        painelEvento2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        painelEvento3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         butVoltar.setBackground(new java.awt.Color(204, 0, 51));
         butVoltar.setText("Voltar");
         butVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
@@ -66,6 +72,7 @@ int numPag = 1;
 
         labelPage.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         labelPage.setText("Página " + Integer.toString(numPag));
+        labelPage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -60,6 +60,7 @@ public class NavbarGUI extends javax.swing.JFrame {
         PanelNavbar.setBorder(new javax.swing.border.MatteBorder(null));
         PanelNavbar.setForeground(new java.awt.Color(153, 0, 51));
 
+        butHome.setBackground(new java.awt.Color(153, 0, 51));
         butHome.setText("Home");
         butHome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         butHome.setMaximumSize(new java.awt.Dimension(72, 50));
@@ -70,6 +71,7 @@ public class NavbarGUI extends javax.swing.JFrame {
             }
         });
 
+        butSearch.setBackground(new java.awt.Color(153, 0, 51));
         butSearch.setText("Search");
         butSearch.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         butSearch.setMaximumSize(new java.awt.Dimension(72, 50));
@@ -80,6 +82,7 @@ public class NavbarGUI extends javax.swing.JFrame {
             }
         });
 
+        butNewEvent.setBackground(new java.awt.Color(153, 0, 51));
         butNewEvent.setText("Eventos");
         butNewEvent.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         butNewEvent.setMaximumSize(new java.awt.Dimension(72, 50));
@@ -90,6 +93,7 @@ public class NavbarGUI extends javax.swing.JFrame {
             }
         });
 
+        butFav.setBackground(new java.awt.Color(153, 0, 51));
         butFav.setText("Fav");
         butFav.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         butFav.setMaximumSize(new java.awt.Dimension(72, 50));
