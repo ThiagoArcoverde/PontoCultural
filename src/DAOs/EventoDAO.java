@@ -103,4 +103,48 @@ public class EventoDAO {
         }
         return listagemEvento;
     }
+    
+    public Evento BuscarEventoNome(String nome){
+        String sql = "SELECT * FROM evento WHERE Nome LIKE ?";
+        
+        Connection conn = null;
+        PreparedStatement statement = null;
+        Evento response = new Evento();
+        
+        try{
+            conn = ConnectionFactory.createConn();
+            statement = conn.prepareStatement(sql);
+            
+            statement.setString(1,nome);
+            
+            ResultSet result = statement.executeQuery();
+            
+            while(result.next()){
+                response.id = result.getInt("Id");
+                response.responsavelId = result.getInt("IdResponsavel");
+                response.nome = result.getString("Nome");
+                response.endereco = result.getString("Endereco");
+                response.data = result.getDate("Data");
+                response.capacidade = result.getInt("Capacidade");
+                response.descricao = result.getString("Descricao");
+                //System.out.println(response.nome);
+            }     
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Evento não encontrado");
+        }finally {
+            try {
+                if (statement != null){
+                    statement.close();
+                }
+
+                if (conn != null){
+                    conn.close();
+                }
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao criar evento, encerrar conexão: "+e);
+            }
+        }
+        return response;
+    }
 }

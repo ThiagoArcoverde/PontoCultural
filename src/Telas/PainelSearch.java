@@ -4,6 +4,14 @@
  */
 package Telas;
 
+import Dados.ConnectionFactory;
+import Entidades.Evento;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import DAOs.EventoDAO;
+
 /**
  *
  * @author thilu
@@ -28,7 +36,7 @@ public class PainelSearch extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TFEventoNome = new javax.swing.JTextField();
         butPesquisar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 0, 51));
@@ -42,11 +50,11 @@ public class PainelSearch extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel2.setText("Informe o nome do evento:");
 
-        jTextField1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TFEventoNome.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        TFEventoNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        TFEventoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TFEventoNomeActionPerformed(evt);
             }
         });
 
@@ -72,7 +80,7 @@ public class PainelSearch extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TFEventoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(52, 52, 52)
                                 .addComponent(jLabel2)
@@ -91,26 +99,47 @@ public class PainelSearch extends javax.swing.JPanel {
                 .addGap(111, 111, 111)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TFEventoNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(butPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(357, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+   
+    public static String capitalize(String str){
+        char capitalFirstChar = Character.toUpperCase(str.charAt(0));
+        return str.replace(str.charAt(0), capitalFirstChar);
+    }
+    
+    private void TFEventoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFEventoNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TFEventoNomeActionPerformed
 
     private void butPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butPesquisarActionPerformed
-        // TODO add your handling code here:
+        Evento event = new Evento();
+        EventoDAO dao = new EventoDAO();
+        
+        String eventoNome = TFEventoNome.getText();
+        eventoNome = capitalize(eventoNome);
+        
+        try {
+            event = dao.BuscarEventoNome(eventoNome);
+            if(event.nome != null) {
+                JOptionPane.showMessageDialog(null, "Descrição: " + event.descricao + "\n\nEndereço: " + event.endereco + "\nData: " + event.data.toString(), event.nome, HEIGHT);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Evento não encontrado");
+            }
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao se comunicar com o servidor!");
+        }
     }//GEN-LAST:event_butPesquisarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TFEventoNome;
     private javax.swing.JButton butPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
