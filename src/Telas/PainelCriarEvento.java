@@ -18,6 +18,12 @@ public class PainelCriarEvento extends javax.swing.JPanel {
     /**
      * Creates new form PainelCriarEvento
      */
+    public User usuarioLogado;
+    public PainelCriarEvento(User user){
+        initComponents();
+        this.usuarioLogado = user;
+    }
+    
     
     public PainelCriarEvento() {
         initComponents();
@@ -237,7 +243,7 @@ public class PainelCriarEvento extends javax.swing.JPanel {
         novoEvento.endereco = this.TFEndereco.getText();
         novoEvento.descricao = this.TFDesc.getText();
         novoEvento.capacidade = Integer.parseInt(this.TFCapacidade.getText());
-        novoEvento.responsavelId = 1;
+        novoEvento.responsavelId = this.usuarioLogado.id;
         
         if(novoEvento != null) {
             EventoDAO dao = new EventoDAO();

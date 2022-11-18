@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class UserDAO {
     public User autenticar(Login login) throws Exception{
-        String sql = "select * from [dbo].[Usuario] where Email = ? AND Senha = ?";
+        String sql = "select * from Usuario where Email = ? AND Senha = ?";
         
         Connection conn = null;
         PreparedStatement statement = null;
@@ -51,7 +51,7 @@ public class UserDAO {
     }
     
     public boolean cadastrar(User usuario) throws Exception {
-        String sql = "insert into [dbo].[Usuario](IdCargo, Nome, CPF, Email, Telefone, Senha)"
+        String sql = "insert into Usuario(IdCargo, Nome, CPF, Email, Telefone, Senha)"
                     +"values(?, ?, ?, ?, ?, ?)";
         
         Connection conn = null;

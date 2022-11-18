@@ -279,6 +279,9 @@
             <Component class="Telas.PainelFavoritos" name="painelFavoritos">
             </Component>
             <Component class="Telas.PainelCriarEvento" name="painelCriarEvento">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Telas.PainelCriarEvento(this.usuarioLogado)"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

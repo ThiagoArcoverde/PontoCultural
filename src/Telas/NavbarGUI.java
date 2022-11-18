@@ -23,9 +23,10 @@ public class NavbarGUI extends javax.swing.JFrame {
     public User usuarioLogado;
     
     public NavbarGUI(User usuario) {
+        this.usuarioLogado = usuario;
+        
         initComponents();
         mudarPainel(painelHome);
-        this.usuarioLogado = usuario;
     }
     
     public NavbarGUI() {
@@ -52,7 +53,7 @@ public class NavbarGUI extends javax.swing.JFrame {
         painelHome = new Telas.PainelHome();
         painelSearch = new Telas.PainelSearch();
         painelFavoritos = new Telas.PainelFavoritos();
-        painelCriarEvento = new Telas.PainelCriarEvento();
+        painelCriarEvento = new Telas.PainelCriarEvento(this.usuarioLogado);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

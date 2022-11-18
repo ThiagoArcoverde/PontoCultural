@@ -6,8 +6,16 @@ package DAOs;
 
 import Dados.ConnectionFactory;
 import Entidades.Evento;
+import Entidades.Login;
+import Entidades.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +24,8 @@ import javax.swing.JOptionPane;
  */
 public class EventoDAO {
     public boolean cadastrarEvento(Evento evento) throws Exception {
-        String sql = "insert into [dbo].[Evento](IdResponsavel, IdCategoria, Nome, Endereco, Data, Capacidade, Descricao)"
-                    +"values(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into Evento(IdResponsavel, Nome, Endereco, Data, Capacidade, Descricao)"
+                    +"values(?, ?, ?, ?, ?, ?)";
         
         Connection conn = null;
         PreparedStatement statement = null;
@@ -28,11 +36,11 @@ public class EventoDAO {
             statement = conn.prepareStatement(sql);
             
             statement.setInt(1, evento.responsavelId);
-            statement.setInt(2, evento.categoriaId);
-            statement.setString(3, evento.nome);
-            statement.setString(4, evento.endereco);
-            statement.setDate(5, evento.data);
-            statement.setInt(6, evento.capacidade);
+            statement.setString(2, evento.nome);
+            statement.setString(3, evento.endereco);
+            statement.setDate(4,  new java.sql.Date(System.currentTimeMillis()));
+            statement.setInt(5, evento.capacidade);
+            statement.setString(6, evento.descricao);
             
             statement.execute();
             response = true;
@@ -52,5 +60,47 @@ public class EventoDAO {
             }
         }
         return response;
+    }
+    public List<Evento> buscarEventos() throws Exception{
+        String sql = "select * from evento ORDER BY Data DESC";
+        
+        Connection conn = null;
+        PreparedStatement statement = null;
+        Evento response = new Evento();
+        List<Evento> listagemEvento = new ArrayList<Evento>();  ;
+        
+        try {
+            conn = ConnectionFactory.createConn();
+            statement = conn.prepareStatement(sql);
+            
+            ResultSet result = statement.executeQuery();
+            
+            while(result.next()) {
+                response.id = result.getInt("Id");
+                response.responsavelId = result.getInt("IdResponsavel");
+                response.nome = result.getString("Nome");
+                response.endereco = result.getString("Endereco");
+                response.data = result.getDate("Data");
+                response.capacidade = result.getInt("Capacidade");
+                response.descricao = result.getString("Descricao");
+                
+                listagemEvento.add(response);
+            }
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(null, "Evento não encontrado");
+        } finally {
+            try {
+                if (statement != null){
+                    statement.close();
+                }
+
+                if (conn != null){
+                    conn.close();
+                }
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Erro cadastrar, encerrar conexão: "+e);
+            }
+        }
+        return listagemEvento;
     }
 }
