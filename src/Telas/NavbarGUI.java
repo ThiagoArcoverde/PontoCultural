@@ -31,12 +31,10 @@ public class NavbarGUI extends javax.swing.JFrame {
         butHome = new javax.swing.JButton();
         butSearch = new javax.swing.JButton();
         butNewEvent = new javax.swing.JButton();
-        butFav = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         painelHome = new Telas.PainelHome();
         painelSearch = new Telas.PainelSearch();
-        painelFavoritos = new Telas.PainelFavoritos();
         painelCriarEvento = new Telas.PainelCriarEvento(this.usuarioLogado);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,31 +76,18 @@ public class NavbarGUI extends javax.swing.JFrame {
             }
         });
 
-        butFav.setBackground(new java.awt.Color(153, 0, 51));
-        butFav.setText("Fav");
-        butFav.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        butFav.setMaximumSize(new java.awt.Dimension(72, 50));
-        butFav.setMinimumSize(new java.awt.Dimension(72, 50));
-        butFav.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butFavActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout PanelNavbarLayout = new javax.swing.GroupLayout(PanelNavbar);
         PanelNavbar.setLayout(PanelNavbarLayout);
         PanelNavbarLayout.setHorizontalGroup(
             PanelNavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelNavbarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(butHome, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(butSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
+                .addComponent(butHome, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(butNewEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(butFav, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelNavbarLayout.setVerticalGroup(
             PanelNavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,9 +95,8 @@ public class NavbarGUI extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(PanelNavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(butHome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(butSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(butNewEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(butFav, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(butSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -122,7 +106,6 @@ public class NavbarGUI extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(painelHome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(painelSearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(painelFavoritos, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(painelCriarEvento, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -143,11 +126,6 @@ public class NavbarGUI extends javax.swing.JFrame {
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelFavoritos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(painelCriarEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -163,11 +141,6 @@ public class NavbarGUI extends javax.swing.JFrame {
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(painelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(14, Short.MAX_VALUE)))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelFavoritos, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(14, Short.MAX_VALUE)))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
@@ -217,10 +190,6 @@ public class NavbarGUI extends javax.swing.JFrame {
         mudarPainel(painelHome);
     }//GEN-LAST:event_butHomeActionPerformed
 
-    private void butFavActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butFavActionPerformed
-        mudarPainel(painelFavoritos);
-    }//GEN-LAST:event_butFavActionPerformed
-
     private void butNewEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butNewEventActionPerformed
         mudarPainel(painelCriarEvento);
     }//GEN-LAST:event_butNewEventActionPerformed
@@ -266,14 +235,12 @@ public class NavbarGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelNavbar;
-    private javax.swing.JButton butFav;
     private javax.swing.JButton butHome;
     private javax.swing.JButton butNewEvent;
     private javax.swing.JButton butSearch;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel mainPanel;
     private Telas.PainelCriarEvento painelCriarEvento;
-    private Telas.PainelFavoritos painelFavoritos;
     private Telas.PainelHome painelHome;
     private Telas.PainelSearch painelSearch;
     // End of variables declaration//GEN-END:variables
