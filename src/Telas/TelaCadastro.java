@@ -228,7 +228,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         String senha1 = String.valueOf(jPasswordField1.getPassword());
         String senha2 = String.valueOf(jPasswordField2.getPassword());
         
-        var novoUsuario = new User();
+        User novoUsuario = new User();
         
         if(!checked) {
             JOptionPane.showMessageDialog(null, "Você precisa aceitar os termos.");

@@ -1,8 +1,11 @@
 package Telas;
 
+import DAOs.EventoDAO;
+import Entidades.Evento;
 import Entidades.User;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -10,12 +13,18 @@ import javax.swing.JButton;
 public class NavbarGUI extends javax.swing.JFrame {
 
     public User usuarioLogado;
-    
+    public List<Evento> listagemEventos;
     public NavbarGUI(User usuario) {
         this.usuarioLogado = usuario;
-        
+        EventoDAO dao = new EventoDAO();
+        try{
+            this.listagemEventos = dao.buscarEventos();
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
         initComponents();
         mudarPainel(painelHome);
+        System.out.println(listagemEventos);
     }
     
     public NavbarGUI() {
@@ -33,7 +42,7 @@ public class NavbarGUI extends javax.swing.JFrame {
         butNewEvent = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        painelHome = new Telas.PainelHome();
+        painelHome = new Telas.PainelHome(this.listagemEventos);
         painelSearch = new Telas.PainelSearch();
         painelCriarEvento = new Telas.PainelCriarEvento(this.usuarioLogado);
 
@@ -112,7 +121,7 @@ public class NavbarGUI extends javax.swing.JFrame {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -165,7 +174,7 @@ public class NavbarGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PanelNavbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 387, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

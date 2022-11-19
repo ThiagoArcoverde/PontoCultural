@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -66,25 +67,28 @@ public class EventoDAO {
         
         Connection conn = null;
         PreparedStatement statement = null;
-        Evento response = new Evento();
-        List<Evento> listagemEvento = new ArrayList<Evento>();  ;
+        //Evento response = new Evento();
+        List<Evento> listagemEvento = new LinkedList<Evento>();
         
         try {
             conn = ConnectionFactory.createConn();
             statement = conn.prepareStatement(sql);
             
             ResultSet result = statement.executeQuery();
-            
+            int i = 0;
             while(result.next()) {
+                Evento response = new Evento();
                 response.id = result.getInt("Id");
                 response.responsavelId = result.getInt("IdResponsavel");
                 response.nome = result.getString("Nome");
+                System.out.println(response.nome);
                 response.endereco = result.getString("Endereco");
                 response.data = result.getDate("Data");
                 response.capacidade = result.getInt("Capacidade");
                 response.descricao = result.getString("Descricao");
                 
-                listagemEvento.add(response);
+                listagemEvento.add(i, response);
+                i++;
             }
         } catch(Exception ex) {
             JOptionPane.showMessageDialog(null, "Evento não encontrado");

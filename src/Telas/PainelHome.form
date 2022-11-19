@@ -82,16 +82,19 @@
     </Component>
     <Component class="Telas.PainelEvento" name="painelEvento1">
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Telas.PainelEvento(this.listagemDeEventos.get(0))"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="painelEvento1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));"/>
       </AuxValues>
     </Component>
     <Component class="Telas.PainelEvento" name="painelEvento2">
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Telas.PainelEvento(this.listagemDeEventos.get(1))"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="painelEvento2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));"/>
       </AuxValues>
     </Component>
     <Component class="Telas.PainelEvento" name="painelEvento3">
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Telas.PainelEvento(this.listagemDeEventos.get(2))"/>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="painelEvento3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));"/>
       </AuxValues>
     </Component>
@@ -107,7 +110,7 @@
           </Border>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Hand Cursor"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
       </Properties>
       <Events>
@@ -126,7 +129,7 @@
           </Border>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Hand Cursor"/>
+          <Color id="Cursor Padr&#xe3;o"/>
         </Property>
       </Properties>
       <Events>

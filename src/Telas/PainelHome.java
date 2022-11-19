@@ -1,10 +1,19 @@
 package Telas;
 
+import Entidades.Evento;
+import java.util.List;
+
 
 public class PainelHome extends javax.swing.JPanel {
 int numPag = 1;
 
+    public List<Evento> listagemDeEventos;
     public PainelHome() {
+        initComponents();
+    }
+    
+    public PainelHome(List<Evento> listaEventos) {
+        this.listagemDeEventos = listaEventos;
         initComponents();
     }
     
@@ -13,9 +22,9 @@ int numPag = 1;
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        painelEvento1 = new Telas.PainelEvento();
-        painelEvento2 = new Telas.PainelEvento();
-        painelEvento3 = new Telas.PainelEvento();
+        painelEvento1 = new Telas.PainelEvento(this.listagemDeEventos.get(0));
+        painelEvento2 = new Telas.PainelEvento(this.listagemDeEventos.get(1));
+        painelEvento3 = new Telas.PainelEvento(this.listagemDeEventos.get(2));
         butVoltar = new javax.swing.JButton();
         butProximo = new javax.swing.JButton();
         labelPage = new javax.swing.JLabel();
@@ -37,7 +46,7 @@ int numPag = 1;
         butVoltar.setBackground(new java.awt.Color(204, 0, 51));
         butVoltar.setText("Voltar");
         butVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        butVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         butVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 butVoltarActionPerformed(evt);
@@ -47,7 +56,7 @@ int numPag = 1;
         butProximo.setBackground(new java.awt.Color(204, 0, 51));
         butProximo.setText("Próximo");
         butProximo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        butProximo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butProximo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         butProximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 butProximoActionPerformed(evt);

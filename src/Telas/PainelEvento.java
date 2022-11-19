@@ -4,6 +4,8 @@
  */
 package Telas;
 
+import Entidades.Evento;
+
 /**
  *
  * @author thilu
@@ -13,8 +15,18 @@ public class PainelEvento extends javax.swing.JPanel {
     /**
      * Creates new form PainelEvento
      */
+    public Evento evento;
     public PainelEvento() {
         initComponents();
+    }
+    
+    public PainelEvento(Evento evento) {
+        this.evento = evento;
+        initComponents();
+        labelData.setText(evento.data.toString());
+        labelDesc.setText(evento.descricao);
+        labelEndereco.setText(evento.endereco);
+        labelName.setText(evento.nome);
     }
 
     /**
@@ -42,7 +54,7 @@ public class PainelEvento extends javax.swing.JPanel {
         labelDesc.setText("Evento Desc");
 
         labelData.setBackground(new java.awt.Color(255, 255, 255));
-        labelData.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        labelData.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         labelData.setText("Evento Data");
 
         labelEndereco.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
@@ -55,13 +67,16 @@ public class PainelEvento extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelDesc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                        .addComponent(labelData))
-                    .addComponent(labelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelData)
+                        .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,8 +85,8 @@ public class PainelEvento extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelName)
                     .addComponent(labelData))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelDesc, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelDesc, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelEndereco)
                 .addContainerGap())
