@@ -1,7 +1,9 @@
 package Telas;
 
 import Entidades.Evento;
+import static java.awt.image.ImageObserver.HEIGHT;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 public class PainelHome extends javax.swing.JPanel {
@@ -25,9 +27,6 @@ int numPag = 1;
         painelEvento1 = new Telas.PainelEvento(this.listagemDeEventos.get(0));
         painelEvento2 = new Telas.PainelEvento(this.listagemDeEventos.get(1));
         painelEvento3 = new Telas.PainelEvento(this.listagemDeEventos.get(2));
-        butVoltar = new javax.swing.JButton();
-        butProximo = new javax.swing.JButton();
-        labelPage = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 0, 51));
 
@@ -38,34 +37,25 @@ int numPag = 1;
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         painelEvento1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        painelEvento1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                painelEvento1MouseClicked(evt);
+            }
+        });
 
         painelEvento2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        painelEvento2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                painelEvento2MouseClicked(evt);
+            }
+        });
 
         painelEvento3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        butVoltar.setBackground(new java.awt.Color(204, 0, 51));
-        butVoltar.setText("Voltar");
-        butVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        butVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        butVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butVoltarActionPerformed(evt);
+        painelEvento3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                painelEvento3MouseClicked(evt);
             }
         });
-
-        butProximo.setBackground(new java.awt.Color(204, 0, 51));
-        butProximo.setText("Próximo");
-        butProximo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        butProximo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        butProximo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butProximoActionPerformed(evt);
-            }
-        });
-
-        labelPage.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        labelPage.setText("Página " + Integer.toString(numPag));
-        labelPage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,19 +63,12 @@ int numPag = 1;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(butVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(labelPage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(butProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(painelEvento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(painelEvento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(painelEvento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)))
-                .addGap(37, 37, 37))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(painelEvento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(painelEvento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(painelEvento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,33 +81,32 @@ int numPag = 1;
                 .addComponent(painelEvento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelEvento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(butVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(butProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPage))
-                .addGap(44, 44, 44))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void butProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butProximoActionPerformed
-        numPag++;
-        labelPage.setText("Página " + Integer.toString(numPag));
-    }//GEN-LAST:event_butProximoActionPerformed
+    private void painelEvento1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelEvento1MouseClicked
+        Evento event = new Evento();
+        event = listagemDeEventos.get(0);
+        JOptionPane.showMessageDialog(null, "Descrição: " + event.descricao + "\n\nEndereço: " + event.endereco + "\nData: " + event.data.toString(), event.nome, HEIGHT);
+    }//GEN-LAST:event_painelEvento1MouseClicked
 
-    private void butVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butVoltarActionPerformed
-        if(numPag != 1){
-            numPag--;
-            labelPage.setText("Página " + Integer.toString(numPag));
-        }
-    }//GEN-LAST:event_butVoltarActionPerformed
+    private void painelEvento2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelEvento2MouseClicked
+        Evento event = new Evento();
+        event = listagemDeEventos.get(1);
+        JOptionPane.showMessageDialog(null, "Descrição: " + event.descricao + "\n\nEndereço: " + event.endereco + "\nData: " + event.data.toString(), event.nome, HEIGHT);
+    }//GEN-LAST:event_painelEvento2MouseClicked
 
+    private void painelEvento3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelEvento3MouseClicked
+        Evento event = new Evento();
+        event = listagemDeEventos.get(2);
+        JOptionPane.showMessageDialog(null, "Descrição: " + event.descricao + "\n\nEndereço: " + event.endereco + "\nData: " + event.data.toString(), event.nome, HEIGHT);
+    }//GEN-LAST:event_painelEvento3MouseClicked
+
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton butProximo;
-    private javax.swing.JButton butVoltar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel labelPage;
     private Telas.PainelEvento painelEvento1;
     private Telas.PainelEvento painelEvento2;
     private Telas.PainelEvento painelEvento3;

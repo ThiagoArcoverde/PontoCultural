@@ -39,7 +39,7 @@ public class EventoDAO {
             statement.setInt(1, evento.responsavelId);
             statement.setString(2, evento.nome);
             statement.setString(3, evento.endereco);
-            statement.setDate(4,  new java.sql.Date(System.currentTimeMillis()));
+            statement.setDate(4,  new java.sql.Date(evento.data.getTime()));
             statement.setInt(5, evento.capacidade);
             statement.setString(6, evento.descricao);
             

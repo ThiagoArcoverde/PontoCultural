@@ -81,8 +81,9 @@ CREATE TABLE `evento` (
 -- Extraindo dados da tabela `evento`
 --
 
-INSERT INTO `evento` (`Id`, `IdResponsavel`, `Nome`, `Endereco`, `Data`, `Capacidade`, `Descricao`) VALUES
-(1, 3, 'teste', 'teste', '2022-11-17 00:00:00', 123, 'teste');
+INSERT INTO `evento`(`Id`, `IdResponsavel`, `Nome`, `Endereco`, `Data`, `Capacidade`, `Descricao`) VALUES ('1','3','Show de rock','Rua da música, 420','2023-01-27','300','Um show aguardado por muito tempo que promete ser incrível');
+INSERT INTO `evento`(`Id`, `IdResponsavel`, `Nome`, `Endereco`, `Data`, `Capacidade`, `Descricao`) VALUES ('2','3','Encontro de animais','Rua dos gatos, 121','2023-03-15','55','Um encontro para amantes de gatos, cachorros e outros animais');
+INSERT INTO `evento`(`Id`, `IdResponsavel`, `Nome`, `Endereco`, `Data`, `Capacidade`, `Descricao`) VALUES ('3','3','Palestra sobre o meio ambiente','Rua Amazonas, 303','2023-03-15','55','Um encontro para conversar sobre a importância do meio ambiente!');
 
 -- --------------------------------------------------------
 
